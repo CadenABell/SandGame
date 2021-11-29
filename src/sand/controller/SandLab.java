@@ -109,7 +109,31 @@ public class SandLab
     {
     	
     }
-   
+    else if (currentTool == WATER)
+    {
+    int randomMove = (int) (Math.random() * 3);
+    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY && randomCol + 1 < grid[0].length && randomCol - 1 < grid[0].length)
+    	{
+    		if (randomMove == 1)
+    		{
+    		int swappedParticle = grid[randomRow + 1][randomCol];
+			grid[randomRow + 1][randomCol] = WATER;
+			grid[randomRow][randomCol] = swappedParticle;
+    		}
+    		else if (randomMove == 2)
+    		{
+    		int swappedParticle = grid[randomRow][randomCol + 1];
+    		grid[randomRow][randomCol + 1] = WATER;
+    		grid[randomRow][randomCol] = swappedParticle;
+    		}
+    		else if (randomMove == 3)
+    		{
+    		int swappedParticle = grid[randomRow][randomCol - 1];
+    		grid[randomRow][randomCol - 1] = WATER;
+    		grid[randomRow][randomCol] = swappedParticle;	
+    		}
+    	}
+    }
     
   }
   
