@@ -9,6 +9,7 @@ public class SandLab
   //add constants for particle types here
   public static final int EMPTY = 0;
   public static final int METAL = 1;
+  public static final int SNAD = 2;
   
   //do not add any more fields below
   private int[][] grid;
@@ -29,6 +30,7 @@ public class SandLab
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
+    names[SNAD] = "Snad";
     
     //1. Add code to initialize the data member grid with same dimensions
     
@@ -61,6 +63,10 @@ public class SandLab
     		else if (currentTool == EMPTY)
     		{
     			display.setColor(row, col, Color.BLACK);
+    		}
+    		else if (currentTool == SNAD)
+    		{
+    			display.setColor(row, col, Color.YELLOW);
     		}
     	}
     }
