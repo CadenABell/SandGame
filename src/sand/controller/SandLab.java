@@ -48,7 +48,22 @@ public class SandLab
   {
       //Step 3
    //Hint - use a nested for loop
-    
+    for (int row = 0; row < grid.length; row++)
+    {
+    	for (int col = 0; col < grid[0].length; col++)
+    	{
+    		int currentTool = grid [row][col];
+    		
+    		if (currentTool == METAL)
+    		{
+    			display.setColor(row, col, Color.GRAY);
+    		}
+    		else if (currentTool == EMPTY)
+    		{
+    			display.setColor(row, col, Color.BLACK);
+    		}
+    	}
+    }
   }
 
   //Step 5,7
