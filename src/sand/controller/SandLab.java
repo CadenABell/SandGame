@@ -32,7 +32,7 @@ public class SandLab
     
     //1. Add code to initialize the data member grid with same dimensions
     
-    
+    this.grid = new int[numRows] [numCols];
     display = new SandDisplay("Falling Sand", numRows, numCols, names);
   }
   
@@ -40,7 +40,7 @@ public class SandLab
   private void locationClicked(int row, int col, int tool)
   {
     //2. Assign the values associated with the parameters to the grid
-   
+   grid[row][col] = tool;
   }
 
   //copies each element of grid into the display
