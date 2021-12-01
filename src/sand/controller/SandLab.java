@@ -124,7 +124,7 @@ public class SandLab
     	}
     	else if (randomMove == 1)
     	{
-    		if (grid[randomRow][randomCol + 1] == EMPTY && randomCol + 1 < grid[0].length)
+    		if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == EMPTY)
     		{
     			int swappedPixel = grid[randomRow][randomCol + 1];
     			grid[randomRow][randomCol + 1] = WATER;
