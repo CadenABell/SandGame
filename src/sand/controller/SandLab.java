@@ -149,7 +149,35 @@ public class SandLab
     }
     else if (currentTool == CORAL)
     {
-    	int
+    	int coralGrowth = (int)(Math.random()*4);
+    	if (coralGrowth == 0)
+    	{
+    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == WATER)
+    		{
+    			grid[randomRow + 1][randomCol] = CORAL;
+    		}
+    	}
+    	else if (coralGrowth == 1)
+    	{
+    		if (randomRow - 1 >= 0 && grid[randomRow - 1][randomCol] == WATER)
+    		{
+    			grid[randomRow - 1][randomCol] = CORAL;
+    		}
+    	}
+    	else if (coralGrowth == 2)
+    	{
+    		if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == WATER)
+    		{
+    			grid[randomRow][randomCol - 1] = CORAL;
+    		}
+    	}
+    	else if (coralGrowth == 3)
+    	{
+    		if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == WATER)
+    		{
+    			grid[randomRow][randomCol + 1] = CORAL;
+    		}
+    	}
     }
     
   }
