@@ -149,23 +149,61 @@ public class SandLab
     }
     else if (currentTool == CORAL)
     {
+    	int nearbyCoralCount = 0;
     	int coralGrowth = (int)(Math.random() * 20);
-
-    	if (coralGrowth == 0)
+    	if (grid[randomRow - 1][randomCol - 1] == CORAL)
     	{
-    		if (randomRow - 2 >= 0 && randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == WATER)
-    		{
-    			grid[randomRow - 1][randomCol] = CORAL;
-    			grid[randomRow - 1][randomCol - 1] = CORAL;
-    		}
+    		nearbyCoralCount += 1;
     	}
-    	else if (coralGrowth == 1)
+    	if (grid[randomRow - 1][randomCol] == CORAL)
     	{
-    		if (randomRow - 2 >= 0 && randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == WATER)
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow - 1][randomCol + 1] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow + 1][randomCol] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow + 1][randomCol + 1] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow + 1][randomCol - 1] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow][randomCol + 1] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (grid[randomRow][randomCol - 1] == CORAL)
+    	{
+    		nearbyCoralCount += 1;
+    	}
+    	if (nearbyCoralCount <= 3)
+    	{
+    		if (coralGrowth == 0)
     		{
-    			grid[randomRow - 1][randomCol] = CORAL;
-    			grid[randomRow - 1][randomCol + 1] = CORAL;
+    			if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == WATER)
+    			{
+    				grid[randomRow][randomCol - 1] = CORAL;
+    			}
     		}
+    		else if (coralGrowth == 1)
+    		{
+    			if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == WATER)
+    			{
+    				grid[randomRow][randomCol + 1] = CORAL;
+    			}
+    		}
+    		else if (coralGrowth == 2)
+    			if (randomRow - 1 >= 0 && grid[randomRow - 1][randomCol] == WATER)
+    			{
+    				grid[randomRow - 1][randomCol] = CORAL;
+    			}
     	}
     }
     
