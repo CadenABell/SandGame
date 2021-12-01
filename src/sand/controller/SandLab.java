@@ -111,26 +111,33 @@ public class SandLab
     }
     else if (currentTool == WATER)
     {
-    int randomMove = (int) (Math.random() * 3);
-    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY && randomCol + 1 < grid[0].length && randomCol - 1 < grid[0].length)
+    	int randomMove = (int) (Math.random() * 3);
+    
+    	if (randomMove == 0)
     	{
-    		if (randomMove == 1)
+    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
     		{
-    		int swappedParticle = grid[randomRow + 1][randomCol];
-    		grid[randomRow + 1][randomCol] = WATER;
-    		grid[randomRow][randomCol] = swappedParticle;
-    		int swappedPixel = grid[randomRow][randomCol + 1];
-    		grid[randomRow][randomCol + 1] = WATER;
-    		grid[randomRow][randomCol] = swappedPixel;
+    			int swappedParticle = grid[randomRow + 1][randomCol];
+    			grid[randomRow + 1][randomCol] = WATER;
+    			grid[randomRow][randomCol] = swappedParticle;
     		}
-    		else if (randomMove == 2)
+    	}
+    	else if (randomMove == 1)
+    	{
+    		if (grid[randomRow][randomCol + 1] == EMPTY && randomCol + 1 < grid[0].length)
     		{
-    		int swappedParticle = grid[randomRow + 1][randomCol];
-    		grid[randomRow + 1][randomCol] = WATER;
-    		grid[randomRow][randomCol] = swappedParticle;
-    		int swappedPixel = grid[randomRow][randomCol - 1];
-    		grid[randomRow][randomCol - 1] = WATER;
-    		grid[randomRow][randomCol] = swappedPixel;	
+    			int swappedPixel = grid[randomRow][randomCol + 1];
+    			grid[randomRow][randomCol + 1] = WATER;
+    			grid[randomRow][randomCol] = swappedPixel;
+    		}
+    	}
+    	else if (randomMove == 2)
+    	{
+    		if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == EMPTY)
+    		{
+    			int swappedPixel = grid[randomRow][randomCol - 1];
+    			grid[randomRow][randomCol - 1] = WATER;
+    			grid[randomRow][randomCol] = swappedPixel;	
     		}
     	}
     }
