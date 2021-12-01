@@ -11,6 +11,7 @@ public class SandLab
   public static final int METAL = 1;
   public static final int SNAD = 2;
   public static final int WATER = 3;
+  public static final int CORAL = 4;
   
   //do not add any more fields below
   private int[][] grid;
@@ -33,6 +34,7 @@ public class SandLab
     names[METAL] = "Metal";
     names[SNAD] = "Snad";
     names[WATER] = "Water";
+    names[CORAL] = "Coral";
     
     //1. Add code to initialize the data member grid with same dimensions
     
@@ -73,6 +75,10 @@ public class SandLab
     		else if (currentTool == WATER)
     		{
     			display.setColor(row, col, Color.BLUE);
+    		}
+    		else if (currentTool == CORAL)
+    		{
+    			display.setColor(row, col, Color.MAGENTA);
     		}
     	}
     }
@@ -140,6 +146,10 @@ public class SandLab
     			grid[randomRow][randomCol] = swappedPixel;	
     		}
     	}
+    }
+    else if (currentTool == CORAL)
+    {
+    	int
     }
     
   }
