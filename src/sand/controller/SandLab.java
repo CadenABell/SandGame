@@ -218,30 +218,25 @@ public class SandLab
         
     		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
     		{
-    			int swappedParticle = grid[randomRow + 1][randomCol];
     			grid[randomRow + 1][randomCol] = SNOW;
-    			grid[randomRow][randomCol] = swappedParticle;
-    		}
-    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
-    		{
+    			grid[randomRow][randomCol] = EMPTY;
+    			
     			int randomMove = (int) (Math.random() * 2);
     		
     			if (randomMove == 0)
     			{
     				if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == EMPTY)
     				{
-    					int swappedPixel = grid[randomRow][randomCol + 1];
+    					grid[randomRow][randomCol] = EMPTY;
     					grid[randomRow][randomCol + 1] = SNOW;
-    					grid[randomRow][randomCol] = swappedPixel;
     				}
     			}
     			else if (randomMove == 1)
     			{
     				if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == EMPTY)
     				{
-    					int swappedPixel = grid[randomRow][randomCol - 1];
+    					grid[randomRow][randomCol] = EMPTY;	
     					grid[randomRow][randomCol - 1] = SNOW;
-    					grid[randomRow][randomCol] = swappedPixel;	
     				}
     			}
     		}
