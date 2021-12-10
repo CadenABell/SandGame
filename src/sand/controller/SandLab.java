@@ -12,6 +12,7 @@ public class SandLab
   public static final int SNAD = 2;
   public static final int WATER = 3;
   public static final int CORAL = 4;
+  public static final int SNOW = 5;
   
   //do not add any more fields below
   private int[][] grid;
@@ -28,13 +29,14 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[5];
+    names = new String[6];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SNAD] = "Snad";
     names[WATER] = "Water";
     names[CORAL] = "Coral";
+    names[SNOW] = "Snow";
     
     //1. Add code to initialize the data member grid with same dimensions
     
@@ -79,6 +81,10 @@ public class SandLab
     		else if (currentTool == CORAL)
     		{
     			display.setColor(row, col, Color.MAGENTA);
+    		}
+    		else if (currentTool == SNOW)
+    		{
+    			display.setColor(row, col, Color.WHITE);
     		}
     	}
     }
@@ -205,6 +211,40 @@ public class SandLab
     				grid[randomRow - 1][randomCol] = CORAL;
     			}
     	}
+    }
+    
+    else if (currentTool == SNOW)
+    {
+        
+    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
+    		{
+    			int swappedParticle = grid[randomRow + 1][randomCol];
+    			grid[randomRow + 1][randomCol] = SNOW;
+    			grid[randomRow][randomCol] = swappedParticle;
+    		}
+    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
+    		{
+    			int randomMove = (int) (Math.random() * 2);
+    		
+    			if (randomMove == 0)
+    			{
+    				if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == EMPTY)
+    				{
+    					int swappedPixel = grid[randomRow][randomCol + 1];
+    					grid[randomRow][randomCol + 1] = SNOW;
+    					grid[randomRow][randomCol] = swappedPixel;
+    				}
+    			}
+    			else if (randomMove == 1)
+    			{
+    				if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == EMPTY)
+    				{
+    					int swappedPixel = grid[randomRow][randomCol - 1];
+    					grid[randomRow][randomCol - 1] = SNOW;
+    					grid[randomRow][randomCol] = swappedPixel;	
+    				}
+    			}
+    		}
     }
     
   }
