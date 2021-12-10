@@ -151,15 +151,15 @@ public class SandLab
     {
     	int nearbyCoralCount = 0;
     	int coralGrowth = (int)(Math.random() * 20);
-    	if (grid[randomRow - 1][randomCol - 1] == CORAL)
+    	if (randomRow - 1 >= 0 && randomCol - 1 >= 0 && grid[randomRow - 1][randomCol - 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow - 1][randomCol] == CORAL)
+    	if (randomRow - 1 >= 0 && grid[randomRow - 1][randomCol] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow - 1][randomCol + 1] == CORAL)
+    	if (randomRow - 1 >= 0 && randomCol + 1 < grid[0].length && grid[randomRow - 1][randomCol + 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
@@ -167,19 +167,19 @@ public class SandLab
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow + 1][randomCol + 1] == CORAL)
+    	if (randomCol + 1 < grid[0].length && grid[randomRow + 1][randomCol + 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow + 1][randomCol - 1] == CORAL)
+    	if (randomCol - 1 >= 0 && grid[randomRow + 1][randomCol - 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow][randomCol + 1] == CORAL)
+    	if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow][randomCol - 1] == CORAL)
+    	if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
