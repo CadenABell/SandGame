@@ -89,8 +89,7 @@ public class SandLab
     	}
     }
   }
-
-  //Step 5,7
+  
   //called repeatedly.
   //causes one random particle in grid to maybe do something.
   public void step()
@@ -225,18 +224,20 @@ public class SandLab
     		
     			if (randomMove == 0)
     			{
-    				if (randomCol + 1 < grid[0].length && grid[randomRow][randomCol + 1] == EMPTY)
+    				if (randomCol + 1 < grid[0].length && grid[randomRow + 1][randomCol + 1] == EMPTY)
     				{
-    					grid[randomRow][randomCol] = EMPTY;
-    					grid[randomRow][randomCol + 1] = SNOW;
+    					int swappedParticle = grid[randomRow + 1][randomCol + 1];
+    	    			grid[randomRow + 1][randomCol + 1] = SNOW;
+    	    			grid[randomRow + 1][randomCol] = swappedParticle;
     				}
     			}
     			else if (randomMove == 1)
     			{
-    				if (randomCol - 1 >= 0 && grid[randomRow][randomCol - 1] == EMPTY)
+    				if (randomCol - 1 >= 0 && grid[randomRow + 1][randomCol - 1] == EMPTY)
     				{
-    					grid[randomRow][randomCol] = EMPTY;	
-    					grid[randomRow][randomCol - 1] = SNOW;
+    					int swappedParticle = grid[randomRow + 1][randomCol - 1];
+    	    			grid[randomRow + 1][randomCol - 1] = SNOW;
+    	    			grid[randomRow + 1][randomCol] = swappedParticle;
     				}
     			}
     		}
