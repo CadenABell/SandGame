@@ -168,7 +168,7 @@ public class SandLab
     	{
     		nearbyCoralCount += 1;
     	}
-    	if (grid[randomRow + 1][randomCol] == CORAL)
+    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == CORAL)
     	{
     		nearbyCoralCount += 1;
     	}
@@ -215,32 +215,56 @@ public class SandLab
     else if (currentTool == SNOW)
     {
         
-    		if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
-    		{
-    			grid[randomRow + 1][randomCol] = SNOW;
-    			grid[randomRow][randomCol] = EMPTY;
+    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == EMPTY)
+    	{
+    		grid[randomRow + 1][randomCol] = SNOW;
+    		grid[randomRow][randomCol] = EMPTY;
     			
-    			int randomMove = (int) (Math.random() * 2);
+    		int randomMove = (int) (Math.random() * 2);
     		
-    			if (randomMove == 0)
+    		if (randomMove == 0)
+    		{
+    			if (randomCol + 1 < grid[0].length && grid[randomRow + 1][randomCol + 1] == EMPTY)
     			{
-    				if (randomCol + 1 < grid[0].length && grid[randomRow + 1][randomCol + 1] == EMPTY)
-    				{
-    					int swappedParticle = grid[randomRow + 1][randomCol + 1];
-    	    			grid[randomRow + 1][randomCol + 1] = SNOW;
-    	    			grid[randomRow + 1][randomCol] = swappedParticle;
-    				}
-    			}
-    			else if (randomMove == 1)
-    			{
-    				if (randomCol - 1 >= 0 && grid[randomRow + 1][randomCol - 1] == EMPTY)
-    				{
-    					int swappedParticle = grid[randomRow + 1][randomCol - 1];
-    	    			grid[randomRow + 1][randomCol - 1] = SNOW;
-    	    			grid[randomRow + 1][randomCol] = swappedParticle;
-    				}
+    				int swappedParticle = grid[randomRow + 1][randomCol + 1];
+    	    		grid[randomRow + 1][randomCol + 1] = SNOW;
+    	    		grid[randomRow + 1][randomCol] = swappedParticle;
     			}
     		}
+    		else if (randomMove == 1)
+    		{
+    			if (randomCol - 1 >= 0 && grid[randomRow + 1][randomCol - 1] == EMPTY)
+    			{
+    				int swappedParticle = grid[randomRow + 1][randomCol - 1];
+    	    		grid[randomRow + 1][randomCol - 1] = SNOW;
+    	    		grid[randomRow + 1][randomCol] = swappedParticle;
+    			}
+    		}
+    	}
+    		
+    	
+    	if (randomRow + 1 < grid.length)
+    	{
+    		if (grid[randomRow + 1][randomCol] == WATER || grid[randomRow + 1][randomCol] == SNAD)
+    		{
+    			grid[randomRow][randomCol] = WATER;
+    		}
+    	}
+    	if (randomCol + 1 < grid[0].length)
+    	{
+    		if (grid[randomRow][randomCol + 1] == WATER || grid[randomRow][randomCol + 1] == SNAD)
+    		{
+    			grid[randomRow][randomCol] = WATER;
+    		}
+    	}
+    	if (randomCol - 1 >= 0)
+    	{
+    		if (grid[randomRow][randomCol - 1] == WATER || grid[randomRow][randomCol - 1] == SNAD)
+    		{
+    			grid[randomRow][randomCol] = WATER;
+    		}
+    	}	
+    		
     }
     
   }
