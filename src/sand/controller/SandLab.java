@@ -5,14 +5,14 @@ import java.util.*;
 
 public class SandLab
 {
-  //Step 4,6
-  //add constants for particle types here
+  
   public static final int EMPTY = 0;
   public static final int METAL = 1;
   public static final int SNAD = 2;
   public static final int WATER = 3;
   public static final int CORAL = 4;
   public static final int SNOW = 5;
+  public static final int ICE = 6;
   
   //do not add any more fields below
   private int[][] grid;
@@ -27,16 +27,16 @@ public class SandLab
   public SandLab(int numRows, int numCols)
   {
     String[] names;
-    // Change this value to add more buttons
-    //Step 4,6
-    names = new String[6];
-    // Each value needs a name for the button
+    
+    names = new String[7];
+    
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SNAD] = "Snad";
     names[WATER] = "Water";
     names[CORAL] = "Coral";
     names[SNOW] = "Snow";
+    names[ICE] = "Ice";
     
     //1. Add code to initialize the data member grid with same dimensions
     
@@ -86,6 +86,10 @@ public class SandLab
     		{
     			display.setColor(row, col, Color.WHITE);
     		}
+    		else if (currentTool == ICE)
+    		{
+    			display.setColor(row, col, Color.CYAN);
+    		}
     	}
     }
   }
@@ -94,10 +98,7 @@ public class SandLab
   //causes one random particle in grid to maybe do something.
   public void step()
   {
-    //Remember, you need to access both row and column to specify a spot in the array
-    //The scalar refers to how big the value could be
-    //int someRandom = (int) (Math.random() * scalar)
-    //remember that you need to watch for the edges of the array
+    
     int randomRow = (int) (Math.random() * grid.length);
     int randomCol = (int) (Math.random() * grid[0].length);
     
@@ -150,6 +151,11 @@ public class SandLab
     			grid[randomRow][randomCol - 1] = WATER;
     			grid[randomRow][randomCol] = swappedPixel;	
     		}
+    	}
+    	
+    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == SNOW)
+    	{
+    		
     	}
     }
     else if (currentTool == CORAL)
@@ -250,23 +256,27 @@ public class SandLab
     			grid[randomRow][randomCol] = WATER;
     		}
     	}
-    	if (randomCol + 1 < grid[0].length)
-    	{
-    		if (grid[randomRow][randomCol + 1] == WATER || grid[randomRow][randomCol + 1] == SNAD)
-    		{
-    			grid[randomRow][randomCol] = WATER;
-    		}
-    	}
-    	if (randomCol - 1 >= 0)
-    	{
-    		if (grid[randomRow][randomCol - 1] == WATER || grid[randomRow][randomCol - 1] == SNAD)
-    		{
-    			grid[randomRow][randomCol] = WATER;
-    		}
-    	}	
+//    	if (randomCol + 1 < grid[0].length)
+//    	{
+//    		if (grid[randomRow][randomCol + 1] == WATER || grid[randomRow][randomCol + 1] == SNAD)
+//    		{
+//    			grid[randomRow][randomCol] = WATER;
+//    		}
+//    	}
+//    	if (randomCol - 1 >= 0)
+//    	{
+//    		if (grid[randomRow][randomCol - 1] == WATER || grid[randomRow][randomCol - 1] == SNAD)
+//    		{
+//    			grid[randomRow][randomCol] = WATER;
+//    		}
+//    	}	
     		
     }
     
+    else if (currentTool == ICE)
+    {
+    	
+    }
   }
   
   //do not modify this method!
