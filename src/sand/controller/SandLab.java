@@ -99,9 +99,17 @@ public class SandLab
     			int swappedParticle = grid[randomRow + 1][randomCol];
     			grid[randomRow + 1][randomCol] = SNAD;
     			grid[randomRow][randomCol] = swappedParticle;
-    	}
-    		
+    	}	
     }
+    
+    else if (currentTool == ICE)
+    {
+    	if (randomRow + 1 < grid.length && grid[randomRow][randomCol] == WATER && grid[randomRow - 1][randomCol] == SNOW)
+    	{
+    		grid[randomRow][randomCol] = ICE;
+    	}
+    }
+    
     else if (currentTool == METAL)
     {
     	
@@ -142,10 +150,10 @@ public class SandLab
     		}
     	}
     	
-    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == SNOW)
-    	{
-    		
-    	}
+//    	if (randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] == SNOW)
+//    	{
+//    		
+//    	}
     }
     else if (currentTool == CORAL)
     {
