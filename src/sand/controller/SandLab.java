@@ -19,11 +19,6 @@ public class SandLab
   private SandDisplay display;
   
   
-  /**
-   * Constructor for SandLab
-   * @param numRows The number of rows to start with
-   * @param numCols The number of columns to start with;
-   */
   public SandLab(int numRows, int numCols)
   {
     String[] names;
@@ -38,24 +33,19 @@ public class SandLab
     names[SNOW] = "Snow";
     names[ICE] = "Ice";
     
-    //1. Add code to initialize the data member grid with same dimensions
     
     this.grid = new int[numRows] [numCols];
     display = new SandDisplay("Falling Sand", numRows, numCols, names);
   }
   
-  //called when the user clicks on a location using the given tool
   private void locationClicked(int row, int col, int tool)
   {
-    //2. Assign the values associated with the parameters to the grid
    grid[row][col] = tool;
   }
 
-  //copies each element of grid into the display
   public void updateDisplay()
   {
-      //Step 3
-   //Hint - use a nested for loop
+      
     for (int row = 0; row < grid.length; row++)
     {
     	for (int col = 0; col < grid[0].length; col++)
@@ -94,8 +84,7 @@ public class SandLab
     }
   }
   
-  //called repeatedly.
-  //causes one random particle in grid to maybe do something.
+
   public void step()
   {
     
@@ -279,10 +268,10 @@ public class SandLab
     }
   }
   
-  //do not modify this method!
+  //do not modify 
   public void run()
   {
-    while (true) // infinite loop
+    while (true) 
     {
       for (int i = 0; i < display.getSpeed(); i++)
       {
@@ -290,9 +279,9 @@ public class SandLab
       }
       updateDisplay();
       display.repaint();
-      display.pause(1);  //wait for redrawing and for mouse
+      display.pause(1);  
       int[] mouseLoc = display.getMouseLocation();
-      if (mouseLoc != null)  //test if mouse clicked
+      if (mouseLoc != null)  
       {
         locationClicked(mouseLoc[0], mouseLoc[1], display.getTool());
       }
